@@ -17,17 +17,17 @@ class User(Base):
     email = Column(String(250))
 
 
-    class Perosnajes_Favoritos(Base):
-    __tablename__ = 'Personaje_Favoritos'
+  class Perosnajes_Favoritos(Base):
+    __tablename__= 'Personajes_Favoritos'
     # Here we define columns for the table address.
     # Notice that each column is also a normal Python instance attribute.
-   id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     characters_id = Column(Integer, ForeignKey('characters.id'))
 
 
 
-    class Planetas_Favoritos(Base):
+  class Planetas_Favoritos(Base):
     __tablename__ = 'Planetas_Favoritos'
     # Here we define columns for the table address.
     # Notice that each column is also a normal Python instance attribute.
@@ -37,7 +37,7 @@ class User(Base):
 
 
 
-    class Naves_Favoritas(Base):
+  class Naves_Favoritas(Base):
     __tablename__ = 'Naves_Favoritas'
     # Here we define columns for the table address.
     # Notice that each column is also a normal Python instance attribute.
@@ -45,7 +45,15 @@ class User(Base):
     user_id = Column(Integer, ForeignKey('users.id'))
     planet_id = Column(Integer, ForeignKey('ships.id'))
 
-    class Perosnajes(Base):
+  class Especies_Favoritas(Base):
+    __tablename__ = 'Especies_Favoritas'
+    # Here we define columns for the table address.
+    # Notice that each column is also a normal Python instance attribute.
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('users.id'))
+    planet_id = Column(Integer, ForeignKey('ships.id'))
+
+  class Perosnajes(Base):
     __tablename__ = 'Personajes'
      # Here we define Columns for the table address.
     # Notice that each Column is also a normal Python instance attribute.
@@ -60,7 +68,7 @@ class User(Base):
     skin_color = Column(String(250))
 
 
-    class Planetas(Base):
+  class Planetas(Base):
     __tablename__ = 'Planetas'
      # Here we define Columns for the table address.
     # Notice that each Column is also a normal Python instance attribute.
@@ -74,7 +82,7 @@ class User(Base):
     climate = Column(String(250))
     terrain = Column(String(250))
 
-    class Naves(Base):
+  class Naves(Base):
     __tablename__ = 'Naves'
      # Here we define Columns for the table address.
     # Notice that each Column is also a normal Python instance attribute.
@@ -88,9 +96,29 @@ class User(Base):
     crew = Column(String(250))
 
 
-    class Vehiculos(Base):
+  class Vehiculos(Base):
     __tablename__='Vehiculos'
     id=column(Integer,primary_key=True)
+     name = Column(String(250))
+    model = Column(String(250))
+    vehicle_class = Column(String(250))
+    manufacturer = Column(String(250))
+    cost_in_credits = Column(String(250))
+    length = Column(String(250))
+    crew = Column(String(250))
+
+  class Especies(Base):
+    __tablename__='Especies'
+    id= column(Integer,primary_key=True)
+    name = Column(String(250))
+    designation =  Column(String(250))
+    average_height = Column(String(250))
+    average_lifespan = Column(String(250))
+    hair_colors =  Column(String(250))
+    skin_colors =  Column(String(250))
+    eye_colors = Column(String(250))
+    homeworld =  Column(String(250))
+    language = Column(String(250))
 
 
 
