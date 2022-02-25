@@ -6,57 +6,45 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 from eralchemy import render_er
 
-Base = declarative_base()
+Base = declarative_base() 
 
 class User(Base):
     __tablename__ = 'User'
-    # Here we define columns for the table person
-    # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
     password = Column(String(250))
     email = Column(String(250))
 
 
-  class Perosnajes_Favoritos(Base):
+class Perosnajes_Favoritos(Base):
     __tablename__= 'Personajes_Favoritos'
-    # Here we define columns for the table address.
-    # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     characters_id = Column(Integer, ForeignKey('characters.id'))
 
 
 
-  class Planetas_Favoritos(Base):
+class Planetas_Favoritos(Base):
     __tablename__ = 'Planetas_Favoritos'
-    # Here we define columns for the table address.
-    # Notice that each column is also a normal Python instance attribute.
-      id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     planet_id = Column(Integer, ForeignKey('planets.id'))
 
 
 
-  class Naves_Favoritas(Base):
+class Naves_Favoritas(Base):
     __tablename__ = 'Naves_Favoritas'
-    # Here we define columns for the table address.
-    # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     planet_id = Column(Integer, ForeignKey('ships.id'))
 
-  class Especies_Favoritas(Base):
+class Especies_Favoritas(Base):
     __tablename__ = 'Especies_Favoritas'
-    # Here we define columns for the table address.
-    # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     planet_id = Column(Integer, ForeignKey('ships.id'))
 
-  class Perosnajes(Base):
+class Perosnajes(Base):
     __tablename__ = 'Personajes'
-     # Here we define Columns for the table address.
-    # Notice that each Column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
     name = Column(String(250))
     birth_year = Column(String(250))
@@ -68,10 +56,9 @@ class User(Base):
     skin_color = Column(String(250))
 
 
-  class Planetas(Base):
+class Planetas(Base):
+
     __tablename__ = 'Planetas'
-     # Here we define Columns for the table address.
-    # Notice that each Column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
     name = Column(String(250))
     diameter = Column(String(250))
@@ -82,10 +69,9 @@ class User(Base):
     climate = Column(String(250))
     terrain = Column(String(250))
 
-  class Naves(Base):
+class Naves(Base):
+
     __tablename__ = 'Naves'
-     # Here we define Columns for the table address.
-    # Notice that each Column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
     name = Column(String(250))
     model = Column(String(250))
@@ -96,7 +82,8 @@ class User(Base):
     crew = Column(String(250))
 
 
-  class Vehiculos(Base):
+class Vehiculos(Base):
+
     __tablename__='Vehiculos'
     id=column(Integer,primary_key=True)
      name = Column(String(250))
@@ -107,7 +94,8 @@ class User(Base):
     length = Column(String(250))
     crew = Column(String(250))
 
-  class Especies(Base):
+class Especies(Base):
+
     __tablename__='Especies'
     id= column(Integer,primary_key=True)
     name = Column(String(250))
@@ -120,14 +108,6 @@ class User(Base):
     homeworld =  Column(String(250))
     language = Column(String(250))
 
-
-
-
-
-
-
-    def to_dict(self):
-        return {}
 
 ## Draw from SQLAlchemy base
 render_er(Base, 'diagram.png')
