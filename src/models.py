@@ -9,42 +9,44 @@ from eralchemy import render_er
 Base = declarative_base() 
 
 class User(Base):
-    __tablename__ = 'User'
+    __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
     password = Column(String(250))
     email = Column(String(250))
 
-
 class Perosnajes_Favoritos(Base):
-    __tablename__= 'Personajes_Favoritos'
+    __tablename__= 'personajes_favoritos'
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
-    characters_id = Column(Integer, ForeignKey('characters.id'))
-
-
+    user_id = Column(Integer, ForeignKey('user.id'))
+    characters_id = Column(Integer, ForeignKey('personajes.id'))
 
 class Planetas_Favoritos(Base):
-    __tablename__ = 'Planetas_Favoritos'
+    __tablename__ = 'planetas_favoritos'
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
-    planet_id = Column(Integer, ForeignKey('planets.id'))
-
-
+    user_id = Column(Integer, ForeignKey('user.id'))
+    planet_id = Column(Integer, ForeignKey('planetas.id'))
 
 class Naves_Favoritas(Base):
-    __tablename__ = 'Naves_Favoritas'
+    __tablename__ = 'naves_favoritas'
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
-    planet_id = Column(Integer, ForeignKey('ships.id'))
+    user_id = Column(Integer, ForeignKey('user.id'))
+    planet_id = Column(Integer, ForeignKey('naves.id'))
 
 class Especies_Favoritas(Base):
-    __tablename__ = 'Especies_Favoritas'
+    __tablename__ = 'especies_favoritas'
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
-    planet_id = Column(Integer, ForeignKey('ships.id'))
+    user_id = Column(Integer, ForeignKey('user.id'))
+    planet_id = Column(Integer, ForeignKey('especies.id'))
+
+class Vehiculos_Favoritas(Base):
+    __tablename__ = 'vehiculos_favoritas'
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('user.id'))
+    planet_id = Column(Integer, ForeignKey('vehiculos.id'))
+
 
 class Perosnajes(Base):
-    __tablename__ = 'Personajes'
+    __tablename__ = 'personajes'
     id = Column(Integer, primary_key=True)
     name = Column(String(250))
     birth_year = Column(String(250))
@@ -58,7 +60,7 @@ class Perosnajes(Base):
 
 class Planetas(Base):
 
-    __tablename__ = 'Planetas'
+    __tablename__ = 'planetas'
     id = Column(Integer, primary_key=True)
     name = Column(String(250))
     diameter = Column(String(250))
@@ -71,7 +73,7 @@ class Planetas(Base):
 
 class Naves(Base):
 
-    __tablename__ = 'Naves'
+    __tablename__ = 'naves'
     id = Column(Integer, primary_key=True)
     name = Column(String(250))
     model = Column(String(250))
@@ -84,7 +86,7 @@ class Naves(Base):
 
 class Vehiculos(Base):
 
-    __tablename__='Vehiculos'
+    __tablename__='vehiculos'
     id=Column(Integer,primary_key=True)
     name = Column(String(250))
     model = Column(String(250))
@@ -96,7 +98,7 @@ class Vehiculos(Base):
 
 class Especies(Base):
 
-    __tablename__='Especies'
+    __tablename__='especies'
     id= Column(Integer,primary_key=True)
     name = Column(String(250))
     designation =  Column(String(250))
