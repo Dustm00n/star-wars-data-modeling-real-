@@ -85,8 +85,8 @@ class Naves(Base):
 class Vehiculos(Base):
 
     __tablename__='Vehiculos'
-    id=column(Integer,primary_key=True)
-     name = Column(String(250))
+    id=Column(Integer,primary_key=True)
+    name = Column(String(250))
     model = Column(String(250))
     vehicle_class = Column(String(250))
     manufacturer = Column(String(250))
@@ -97,7 +97,7 @@ class Vehiculos(Base):
 class Especies(Base):
 
     __tablename__='Especies'
-    id= column(Integer,primary_key=True)
+    id= Column(Integer,primary_key=True)
     name = Column(String(250))
     designation =  Column(String(250))
     average_height = Column(String(250))
